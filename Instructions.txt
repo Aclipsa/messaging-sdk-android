@@ -1,0 +1,16 @@
+Instructions:
+
+1. In Android Studio, create a new module and choose “Phone and Tablet Application” then choose “Import .JAR or .AAR Package” (see picture)
+
+2. Open Module Settings then add the aclipsasdk and common module on your project.
+
+3.  Add the following dependencies on your gradle file
+
+dependencies {
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'com.google.guava:guava:18.0'
+    compile 'com.amazonaws:aws-android-sdk-core:2.1.5'
+    compile 'com.amazonaws:aws-android-sdk-s3:2.1.5'
+    compile 'com.googlecode.mp4parser:isoparser:1.0.5.4'
+    compile 'com.mcxiaoke.volley:library:1.0.11'
+}
