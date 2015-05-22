@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_gray">#C0C0C0</color>
+
+    <color name="lower_yellow">#ffd52e</color>
+    <color name="upper_yellow">#ffeca3</color>
+
+    <color name="lower_1minute">#47ca9b</color>
+    <color name="upper_1minute">#b4e9d6</color>
+
+    <color name="lower_2minute">#07b4c9</color>
+    <color name="upper_2minute">#9be1e9</color>
+
+    <color name="lower_3minute">#0288db</color>
+    <color name="upper_3minute">#99cff1</color>
+
+    <color name="lower_4minute">#4b7aff</color>
+    <color name="upper_4minute">#b6c9ff</color>
+
+    <color name="lower_5minute">#7d7ff1</color>
+    <color name="upper_5minute">#d3d4fa</color>
+</resources>

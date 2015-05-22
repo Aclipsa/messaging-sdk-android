@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="aclipsasdk-release-unspecified">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/build/intermediates/exploded-aar/aclipsasdkdemo-android/aclipsasdk-release/unspecified/classes.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/intermediates/exploded-aar/aclipsasdkdemo-android/aclipsasdk-release/unspecified/libs/sqlcipher.jar!/" />
+      <root url="file://$PROJECT_DIR$/build/intermediates/exploded-aar/aclipsasdkdemo-android/aclipsasdk-release/unspecified/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

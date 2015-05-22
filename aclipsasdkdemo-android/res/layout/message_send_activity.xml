@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/videocapturedRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        >
+
+        <com.aclipsa.aclipsasdk.AclipsaSDKVideoView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/videoView"/>
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/videoCaptureImageView"
+            android:src="@drawable/ic_launcher"/>
+
+        <ImageButton
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/playVideoButton"
+            android:src="@drawable/aclipsa360playbtn"
+            android:scaleType="fitCenter"
+            android:padding="30dp"
+            android:background="@null"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trim"
+            android:id="@+id/trimButton"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/videoCaptureImageView"
+            android:layout_marginLeft="50dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="To:"
+            android:id="@+id/textView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:ems="10"
+            android:id="@+id/recipientEditText"
+            android:layout_toRightOf="@+id/textView"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Title:"
+            android:id="@+id/textView2"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:id="@+id/messageTitleEditText"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/textView2" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Message:"
+            android:id="@+id/textViewX"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/messageBodyEditText"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/textViewX" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Send"
+            android:id="@+id/sendMessageButton"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center">
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:id="@+id/saveMessageButton"/>
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:id="@+id/cancelMessageButton"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/saveMessageButton"
+            android:layout_marginLeft="10dp" />
+    </RelativeLayout>
+
+</LinearLayout>

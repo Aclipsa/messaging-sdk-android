@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.aclipsa.aclipsasdkdemo"
+    android:versionCode="2"
+    android:versionName="1.1" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="18" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="Aclipsa SDK Demo"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="@string/app_name" android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--
+        <activity android:name=".activities.CreateVideoActivity" android:screenOrientation="portrait" ></activity>
+        <activity android:name=".activities.LoginActivity" android:screenOrientation="portrait" ></activity>
+        <activity android:name=".activities.AllVideosActivity" android:screenOrientation="portrait" ></activity> -->
+        <activity android:name=".activities.VideoDetailActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".activities.MessageDetailActivity" android:screenOrientation="portrait" ></activity>
+        <activity android:name=".activities.RecordVideoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.MessageSendActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.TrimVideoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.ConversationDetailsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.ConversationMessageActivity" android:screenOrientation="portrait"/>
+
+        <provider
+            android:name="com.aclipsa.aclipsasdk.data.AclipsaSDKContentProvider"
+            android:authorities="com.aclipsa.aclipsasdkdemo.data"
+            android:exported="false"></provider>
+
+    </application>
+
+</manifest>

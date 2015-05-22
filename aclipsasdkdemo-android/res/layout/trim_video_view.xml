@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#3a3a3a"
+              android:gravity="center_horizontal">
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="#3a3a3a">
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:id="@+id/savebButton"
+                android:layout_weight="1"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:id="@+id/cancelButton"
+                android:layout_weight="1"/>
+    </LinearLayout>
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:id="@+id/timeLineContainer"
+            android:layout_weight="0.5">
+
+        <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/yellow_rounded_rectangle"
+                android:layout_alignLeft="@+id/dragButton1"
+                android:layout_alignRight="@+id/dragButton2">
+        </FrameLayout>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A"
+                android:id="@+id/dragButton1"
+                android:background="@null"
+                android:textColor="@android:color/white"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="B"
+                android:id="@+id/dragButton2"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:textColor="@android:color/white"/>
+    </RelativeLayout>
+
+    <VideoView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/previewVideoView"
+            android:layout_weight="10"
+            android:layout_gravity="center_horizontal"/>
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#3a3a3a">
+
+        <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Play"
+                android:id="@+id/button3"
+                android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+
+</LinearLayout>

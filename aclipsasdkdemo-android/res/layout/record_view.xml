@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/recordFragmentLayout"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/vidSurfaceViewContainer"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switchCameraButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/flip_camera_button"
+        android:background="@null" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/flashImageButton"
+        android:layout_alignTop="@+id/switchCameraButton"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="11dp"
+        android:src="@drawable/flashoff"
+        android:background="@null" />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/countDownImageView"
+        android:layout_alignParentBottom="false"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:src="@drawable/countdown_iphone_3" />
+
+    <RelativeLayout
+        android:id="@+id/recordButtonLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:scaleType="fitXY"
+            android:src="@drawable/tabbarrecordbg"
+            android:layout_alignParentLeft="true"/>
+
+        <ImageView
+            android:id="@+id/arcDrawableImageView"
+            android:layout_width="@dimen/arc_drawable_width"
+            android:layout_height="@dimen/arc_drawable_width"
+            android:layout_centerInParent="true"
+            />
+
+        <Button
+            android:id="@+id/recordButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/tabbarrecordbuttonreadyhighlighted"
+            android:gravity="bottom|center_horizontal"
+            android:padding="@dimen/record_button_padding"
+            android:text="REC"
+            style="@style/TabButtonStyle"
+            android:tag="1" />
+
+        <Chronometer
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/recordLimitChronometer"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/black" />
+
+    </RelativeLayout>
+</RelativeLayout>
