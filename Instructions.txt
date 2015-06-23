@@ -1,16 +1,218 @@
 Instructions:
 
-1. In Android Studio, create a new module and choose “Phone and Tablet Application” then choose “Import .JAR or .AAR Package” (see picture)
-
-2. Open Module Settings then add the aclipsasdk and common module on your project.
-
-3.  Add the following dependencies on your gradle file
+1. Add the following dependencies on your gradle file
 
 dependencies {
+    compile 'com.aclipsa:aclipsasdk:1.0.0@aar'
+    compile 'com.mobileaze:common:1.0.0@aar'
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'com.google.guava:guava:18.0'
     compile 'com.amazonaws:aws-android-sdk-core:2.1.5'
     compile 'com.amazonaws:aws-android-sdk-s3:2.1.5'
-    compile 'com.googlecode.mp4parser:isoparser:1.0.5.4'
     compile 'com.mcxiaoke.volley:library:1.0.11'
 }
+
+2. Register an instance of the AclipsaSDK using your CLIENT KEY and PASSPHRASE
+
+
+     AclipsaSDK.getInstance(this).register(DemoAppConstants.CLIENT_KEY, 
+	deviceUuid, DemoAppConstants.DEMO_PASSPHRASE, DemoAppConstants.CONTENTPROVIDER_AUTHORITY,
+        DemoAppConstants.SCHEME, DemoAppConstants.SAAS_URL, this, "REGISTER");
+
+
+3. Login using your identifier
+   AclipsaSDK.getInstance(this).loginUser(“MY_ID”, LoginFragment.this, LOGIN_TAG);
+ 
+
+Once registered and logged in, we can now proceed to sending and querying for messages
+
+Sending a message
+
+Implement the AclipsaSDKMessageHandler interface on your activity and call sendMessage
+
+public class MyActivity extends Activity implements AclipsaSDKMessageHandler{
+
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.myactivity_activity);
+
+      ArrayList<String> recipients = new ArrayList();
+      recipients.add(“recipient_1);
+      recipients.add(“recipient_2”);
+
+      String id = AclipsaSDK.getInstance(getActivity()).sendMessage(this, this, 
+					“MY_TAG”, “Title - Hey”, 
+					“How’s everything going?”, null, recipients, false,
+                                        “MESSAGE_ID_12345”, "portrait", false);
+   }
+
+   @Override	
+   public void apiCreateMessageSuccess(Object tag, int statusCode,
+			String errorString, String guid) {
+	//Called when message creation was a success
+
+        if(tag.equals(“MY_TAG”){
+           //Message creation was a success
+        }
+   }
+
+   @Override
+   public void apiMessageRequestResponseSuccess(Object tag, int statusCode,
+			String errorString, Object response) {
+	//Used for querying message(s)
+   }
+
+   @Override
+   public void apiMessageRequestResponseFailure(Object tag, int statusCode,
+			String errorString) {
+	//Handle failure
+   } 
+}
+
+
+
+Getting message threads
+
+Implement the AclipsaSDKMessageHandler interface on your activity and call getMessageThreads
+
+
+public class MyActivity extends Activity implements AclipsaSDKMessageHandler{
+  
+   private ListView conversationListView;
+
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.myactivity_activity);
+
+
+      conversationListView = (ListView) v.findViewById(R.id.conversationListView);
+
+      AclipsaSDK.getInstance(getActivity()).getMessageThreads(this, “MY_THREAD_TAG”);
+   }
+
+
+   @Override	
+   public void apiCreateMessageSuccess(Object tag, int statusCode,
+			String errorString, String guid) {
+	//Called when message creation was a success
+
+   }
+
+   @Override
+   public void apiMessageRequestResponseSuccess(Object tag, int statusCode,
+			String errorString, Object response) {
+	//Used for querying message(s)
+        if(tag != null){
+            if(tag.equals(“MY_THREAD_TAG”){
+
+		if(response != null){
+		   ArrayList<AclipsaThread> threads = (ArrayList<AclipsaThread>)response;
+
+		   //implement a custom adpater to handle AclipsaThread object
+                   ThreadAdapter  threadAdapter = new ThreadAdapter(getActivity(), R.layout.thread_item, threads);
+		    	
+		   conversationListView.setAdapter(threadAdapter);
+		}			
+            }
+        }
+   }
+
+   @Override
+   public void apiMessageRequestResponseFailure(Object tag, int statusCode,
+			String errorString) {
+	//Handle failure
+   } 
+}
+
+
+Getting a list of messages on a thread
+
+public class MyActivity extends Activity implements AclipsaSDKMessageHandler{
+  
+   private ListView messageListView;
+
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.myactivity_activity);
+
+      //Acquired from getThreads
+      String threadID = getIntent().getStringExtra("threadId");
+
+      messageListView = (ListView) v.findViewById(R.id.conversationListView);
+
+      AclipsaSDK.getInstance(this).getMessageThreadFromID(this, “MY_THREAD_TAG”, threadID);
+   }
+
+
+   @Override	
+   public void apiCreateMessageSuccess(Object tag, int statusCode,
+			String errorString, String guid) {
+	//Called when message creation was a success
+
+   }
+
+   @Override
+   public void apiMessageRequestResponseSuccess(Object tag, int statusCode,
+			String errorString, Object response) {
+	//Used for querying message(s)
+        if(tag != null){
+            if(tag.equals(“MY_THREAD_TAG”){
+
+		if(response != null){
+		   ArrayList<AclipsaMessage> messages = (ArrayList<AclipsaMessage>)response;
+
+		   //implement a custom adpater to handle AclipsaMessage object
+                   MessageAdapter messageAdapter = new MessageAdapter(getActivity(), R.layout.thread_item, messages);
+		    	
+		   messageListView.setAdapter(threadAdapter);
+		}			
+            }
+        }
+   }
+
+   @Override
+   public void apiMessageRequestResponseFailure(Object tag, int statusCode,
+			String errorString) {
+	//Handle failure
+   } 
+}
+
+Playback a video
+
+public class MyActivity extends Activity implements AclipsaSDKHandler{
+  
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.myactivity_activity);
+
+      AclipsaVideoView videoView = findViewById(R.id.videoView);
+
+      //passed to this activity
+      AclipsaVideo mVideo = getIntent().getStringExtra(“myVideo”);
+
+
+      try {
+          AclipsaSDK.getInstance(this).playVideo(this, this, mVideo, videoView, onPreparedListener, null);
+      } catch (AclipsaSDKException e) {
+         e.printStackTrace();
+      }
+   }
+
+   @Override
+   public void apiRequestResponseSuccess(Object tag, int statusCode,
+			String errorString) {		
+  }
+
+  @Override
+  public void apiRequestResponseFailure(Object tag, int statusCode,
+			String errorString) {
+   }
+}
+
+
+
+
