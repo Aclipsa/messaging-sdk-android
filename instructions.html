@@ -36,6 +36,7 @@
 <li><h2>Login using your identifier:</h2>
 <p><pre><code>AclipsaSDK.getInstance(this).loginUser("MY_ID", LoginFragment.this, LOGIN_TAG);
 </code></pre></p>
+
 <p>Once registered and logged in, we can now proceed to sending and querying for messages.</p>
 
 
@@ -58,9 +59,8 @@
 			"How&rsquo;s everything going?", null, recipients, false,
 			"MESSAGE_ID_12345", "portrait", false);
 	}
-</code></pre></p>
 
-<p><pre><code>	@Override	
+	@Override	
 	public void apiCreateMessageSuccess(Object tag, int statusCode,
 		String errorString, String guid) {
 		//Called when message creation was a success
@@ -69,24 +69,20 @@
 			//Message creation was a success
 		}
 	}
-</code></pre></p>
 
-<p><pre><code>	@Override
+	@Override
 	public void apiMessageRequestResponseSuccess(Object tag, int statusCode,
 		String errorString, Object response) {
 		//Used for querying message(s)
 	}
-</code></pre></p>
 
-<p><pre>
-<code>	@Override
+	@Override
 	public void apiMessageRequestResponseFailure(Object tag, int statusCode,
 		String errorString) {
 		//Handle failure
 	} 
-}</code>
-</pre>
-</p>
+}
+</code></pre></p>
 
 
 <h3>Getting message threads</h3>
@@ -96,11 +92,8 @@
 <p><pre><code>public class MyActivity extends Activity implements AclipsaSDKMessageHandler {
 
 	private ListView conversationListView;
-</code></pre></p>
 
-<p>
-<pre>
-<code>	@Override
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.myactivity_activity);
@@ -109,16 +102,14 @@
 
 		AclipsaSDK.getInstance(getActivity()).getMessageThreads(this, "MY_THREAD_TAG");
 	}
-</code></pre></p>
 
-<p><pre><code>	@Override
+	@Override
 	public void apiCreateMessageSuccess(Object tag, int statusCode,
 		String errorString, String guid) {
 		//Called when message creation was a success
 	}
-</code></pre></p>
 
-<p><pre><code>	@Override
+	@Override
 	public void apiMessageRequestResponseSuccess(Object tag, int statusCode,
 		String errorString, Object response) {
 		//Used for querying message(s)
@@ -135,9 +126,8 @@
 			}
 		}
 	}
-</code></pre></p>
 
-<p><pre><code>	@Override
+	@Override
 	public void apiMessageRequestResponseFailure(Object tag, int statusCode,
 		String errorString) {
 		//Handle failure
@@ -150,9 +140,8 @@
 <p><pre><code>public class MyActivity extends Activity implements AclipsaSDKMessageHandler{
 
 	private ListView messageListView;
-</code></pre></p>
 
-<p><pre><code>	@Override
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.myactivity_activity);
@@ -164,17 +153,14 @@
 
 		AclipsaSDK.getInstance(this).getMessageThreadFromID(this, "MY_THREAD_TAG", threadID);
 	}
-</code></pre></p>
 
-
-<p><pre><code>	@Override	
+	@Override	
 	public void apiCreateMessageSuccess(Object tag, int statusCode,
 		String errorString, String guid) {
 		//Called when message creation was a success
 	}
-</code></pre></p>
 
-<p><pre><code>	@Override
+	@Override
 	public void apiMessageRequestResponseSuccess(Object tag, int statusCode,
 		String errorString, Object response) {
 		//Used for querying message(s)
@@ -191,9 +177,8 @@
 			}
 		}
 	}
-</code></pre></p>
 
-<p><pre><code>	@Override
+	@Override
 	public void apiMessageRequestResponseFailure(Object tag, int statusCode,
 		String errorString) {
 		//Handle failure
@@ -204,9 +189,8 @@
 <h3>Playback a video</h3>
 
 <p><pre><code>public class MyActivity extends Activity implements AclipsaSDKHandler {
-</code></pre></p>
-  
-<p><pre><code>	@Override
+
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.myactivity_activity);
@@ -222,15 +206,13 @@
 			e.printStackTrace();
 		}
 	}
-</code></pre></p>
 
-<p><pre><code>	@Override
+	@Override
 	public void apiRequestResponseSuccess(Object tag, int statusCode,
 		String errorString) {		
 	}
-</code></pre></p>
 
-<p><pre><code>	@Override
+	@Override
 	public void apiRequestResponseFailure(Object tag, int statusCode,
 		String errorString) {
 	}
